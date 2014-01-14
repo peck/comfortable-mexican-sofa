@@ -12,7 +12,10 @@ class Cms::File < ActiveRecord::Base
     :styles => lambda { |f|
       if f.respond_to?(:instance) && f.instance.respond_to?(:dimensions)
         (f.instance.dimensions.blank?? { } : { :original => f.instance.dimensions }).merge(
-          :cms_thumb => '80x60#'
+          :cms_thumb => '80x60#',
+          :cms_small => '100x100#',
+          :cms_medium => '300x300#',
+          :cms_large => '500x500#'
         )
       end
     }
